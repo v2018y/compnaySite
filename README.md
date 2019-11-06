@@ -9,4 +9,4 @@ We provide services in such a way that people come again to us and use our servi
 
 ## License
 
-V & Y © [v2018y](https://github.com/v2018y)
+ISC © [V & Y](http://vany.is-best.net/?i=1)
