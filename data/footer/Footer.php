@@ -13,16 +13,19 @@
 					<!-- button -->
 					<div class="col-lg-5 w3l-footer text-lg-right text-center mt-3">
 						<ul class="list-unstyled footer-nav-wthree">
-							<li class="mr-4">
+							<li class="mr-3">
 								<a href="index.php" >Home</a>
 							</li>
-							<li class="mr-4">
+							<li class="mr-3">
 								<a  href="about.php">About Us</a>
 							</li>
-							<li class="mr-4">
+							<li class="mr-3">
 								<a class="" href="gallery.php">Gallery</a>
 							</li>
-							<li>
+							<li class="mr-3">
+								<a class="" href="product.php">Products</a>
+							</li>
+							<li class="mr-3">
 								<a class="" href="contact.php">Contact Us</a>
 							</li>
 						</ul>

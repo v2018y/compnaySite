@@ -11,6 +11,8 @@
     <?php include('./data/navbar/NavBar.php'); ?>
     </header>
 
+    
+
 <!-- footer -->
 <?php include("./data/footer/Footer.php") ?>
 <!-- //footer -->

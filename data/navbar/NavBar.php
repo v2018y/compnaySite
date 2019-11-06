@@ -10,11 +10,14 @@
     				<li class="nav-item">
     					<a class="nav-link" href="index.php">Home </a>
 				    </li>
-				    <li class="nav-item active mx-xl-5 mx-lg-3 my-lg-0 my-3">
+				    <li class="nav-item mx-xl-5 mx-lg-3 my-lg-0 my-3">
     					<a class="nav-link" href="about.php">About Us </a>
 				    </li>
 				    <li class="nav-item mx-xl-5 mx-lg-3 mt-lg-0 mt-3">
     			    		<a class="nav-link" href="gallery.php">Gallery</a>
+					</li>
+					<li class="nav-item mx-xl-5 mx-lg-3 mt-lg-0 mt-3">
+    			    		<a class="nav-link" href="product.php">Products</a>
 				    </li>
 				    <li class="nav-item mt-lg-0 mt-3">
     			    		<a class="nav-link" href="contact.php">Contact Us</a>

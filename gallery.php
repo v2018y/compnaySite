@@ -40,7 +40,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<div class="gallery pt-5">
 		<div class="container pt-xl-5 pt-lg-3">
 			<h3 class="title-w3 mb-sm-5 mb-4 text-dark text-center font-weight-bold">Gallery</h3>
-			<p class="title-para text-center mx-auto mb-sm-5 mb-4">this our gallery, here give a quick review of our company.</p>
+			<p class="title-para text-center mx-auto mb-sm-5 mb-4">This our Company gallery, here gives a quick review of our company.</p>
 			<ul class="demo">
 				<!-- <li>
 					<div class="gallery-grid1">
