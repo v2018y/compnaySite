@@ -6,12 +6,14 @@
 	$client_name=$_POST['person_name'];
 	// Get Client Name
 	$compnay_name=$_POST['compnay_name'];
+	// Get Product Discrptions
+	$prod_disc=$_POST['product_disp'];
 	// Get image name
 	$image_name = $_FILES['image']['name'];
     // convert into blob 
 	$image_bolob = addslashes(file_get_contents($_FILES['image']['tmp_name']));
 	// Query for executions  
-	$sql = "INSERT INTO `product`( `mime`, `data`, `client_name`, `compnay_name`) VALUES ('$image_name', '$image_bolob','$client_name','$compnay_name')";
+	$sql = "INSERT INTO `product`( `mime`, `data`, `client_name`, `compnay_name`,`prodDisc`) VALUES ('$image_name', '$image_bolob','$client_name','$compnay_name','$prod_disc')";
   	// execute query
 	$result = mysqli_query($link, $sql);
 	if($result){
@@ -67,6 +69,7 @@
   	  <input type="file" name="image" ><br>
       <input  id="text" name="person_name"  placeholder="Enter Project Client Name" /><br>
 	  <input  id="text" name="compnay_name"  placeholder="Enter Compnay Name" /><br>
+	  <textArea id="text" name="product_disp"  placeholder="Enter Product Discription" ></textArea>
   	</div>
   	<div>
   		<button type="submit" name="upload">Submit Product Details</button>
