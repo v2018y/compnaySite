@@ -25,29 +25,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Image Upload</title>
-<style type="text/css">
-   #content{
-   	width: 50%;
-   	margin: 20px auto;
-   }
-   form{
-   	width: 50%;
-   	margin: 20px auto;
-   }
-   form div{
-   	margin-top: 5px;
-   }
-   .row {
-  	display: flex;
-	}
-
-/* Create three equal columns that sits next to each other */
-.column {
-  flex: 33.33%;
-  padding: 5px;
-}
-</style>
+<title>Gallery Image Upload</title>
+<link rel="stylesheet" href="../css/admin.css">
 </head>
 <body>
 <div id="content">
@@ -65,11 +44,9 @@
   <form method="POST" enctype="multipart/form-data">
   	<div>
   	  <input type="file" name="image" ><br>
-      <input  id="text" name="person_name"  placeholder="Enter Project Client Name" /><br>
-	  <input  id="text" name="compnay_name"  placeholder="Enter Compnay Name" /><br>
-  	</div>
-  	<div>
-  		<button type="submit" name="upload">Submit Iamge Details</button>
+      <input type="text"  id="text" name="person_name"  placeholder="Enter Project Client Name" /><br>
+	  <input type="text" id="text" name="compnay_name"  placeholder="Enter Compnay Name" /><br>
+	  <input type="submit" name="upload" value="Submit Iamge Details">
   	</div>
   </form>
 </div>
