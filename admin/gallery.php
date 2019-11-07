@@ -27,28 +27,45 @@
 <head>
 <title>Gallery Image Upload</title>
 <link rel="stylesheet" href="../css/admin.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 </head>
 <body>
 <div id="content">
-  <?php
-   $result = mysqli_query($link, "SELECT * FROM `gallery`");
-   echo "<div class='row'>";	
-   while ($row = mysqli_fetch_array($result)) {
-	   echo "<div class='column'>";
-      	echo "<img  style='width:100%' src='data:image/jpeg;base64,".base64_encode($row['data'])."'>";
-		  echo "<p>".$row['mime']."</p>";
-		  echo "</div>";
-	}
-	echo "</div>";
-  ?>
-  <form method="POST" enctype="multipart/form-data">
+<form method="POST" enctype="multipart/form-data">
   	<div>
   	  <input type="file" name="image" ><br>
       <input type="text"  id="text" name="person_name"  placeholder="Enter Project Client Name" /><br>
 	  <input type="text" id="text" name="compnay_name"  placeholder="Enter Compnay Name" /><br>
 	  <input type="submit" name="upload" value="Submit Iamge Details">
   	</div>
-  </form>
+</form>
+<div class="table-responsive">
+<table class="table">
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>Image name</th>
+          <th>Image</th>
+          <th></th>        
+		</tr>
+      </thead>
+	  <tbody>
+		 <?php 
+		 $result = mysqli_query($link, "SELECT * FROM `gallery`");
+		 echo "<div class='row'>";	
+		 while ($row = mysqli_fetch_array($result)) {
+		 ?>
+			<tr>
+			  <td><?php echo $row['id']  ?></td>
+			  <td><?php echo $row['mime']  ?></td>
+			  <td> <img src='data:image/jpeg;base64,<?php echo base64_encode($row['data']) ?>' alt='<?php echo $row['mime'] ?>'  class="img-thumbnail" width="307" height="240"/> </td>
+			  <td><button>Edit </button></td>
+			  <td><button>Delete</button></td>
+			</tr>
+		 <?php }?>
+	  </tbody>
+</table>
+</div>
 </div>
 </body>
 </html>
