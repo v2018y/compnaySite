@@ -2,12 +2,16 @@
    include("../data/db/db.php");
   // If upload button is clicked ...
   if (isset($_POST['upload'])) {
-  	// Get image name
+	// Get Client Name
+	$client_name=$_POST['person_name'];
+	// Get Client Name
+	$compnay_name=$_POST['compnay_name'];
+	// Get image name
 	$image_name = $_FILES['image']['name'];
     // convert into blob 
 	$image_bolob = addslashes(file_get_contents($_FILES['image']['tmp_name']));
 	// Query for executions  
-	$sql = "INSERT INTO `product`(`mime`, `data`, `url`) VALUES ('$image_name', '$image_bolob','demo')";
+	$sql = "INSERT INTO `product`( `mime`, `data`, `client_name`, `compnay_name`) VALUES ('$image_name', '$image_bolob','$client_name','$compnay_name')";
   	// execute query
 	$result = mysqli_query($link, $sql);
 	if($result){
@@ -60,13 +64,12 @@
   ?>
   <form method="POST" enctype="multipart/form-data">
   	<div>
-  	  <input type="file" name="image">
+  	  <input type="file" name="image" ><br>
+      <input  id="text" name="person_name"  placeholder="Enter Project Client Name" /><br>
+	  <input  id="text" name="compnay_name"  placeholder="Enter Compnay Name" /><br>
   	</div>
   	<div>
-      <input  id="text" name="image_url"  placeholder="Enter Url Data"></textarea>
-  	</div>
-  	<div>
-  		<button type="submit" name="upload">Submit Product Image</button>
+  		<button type="submit" name="upload">Submit Product Details</button>
   	</div>
   </form>
 </div>

@@ -3,7 +3,7 @@
   if (!$link) {
       die("Database connection failed: " . mysqli_connect_error());
   }
-  $db = mysqli_select_db($link, "santoshsir");
+  $db = mysqli_select_db($link, "vany");
   if (!$db) {
       die("Database selection failed: " . mysqli_connect_error());
   }
