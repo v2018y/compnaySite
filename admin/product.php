@@ -29,8 +29,26 @@
 <head>
 <title>Product Informations Upload</title>
 <link rel="stylesheet" href="../css/admin.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/jquery.dataTables.min.css">
+<script src="../js/jquery-2.2.3.min.js"></script>
+<script src="../js/jquery.dataTables.min.js"></script>
 </head>
+<script>
+$(document).ready(function() {
+    $('#example').DataTable(
+		{"columns": [
+            { "data": "id" },
+            { "data": "image_name" },
+            { "data": "image" },
+			{ "data": "" }
+		],
+		"lengthMenu": [[2,5,10, 25, 50, -1], [2,5,10, 25, 50, "All"]],
+		"pagingType": "full_numbers",
+		"iDisplayLength": 2
+	}
+	);
+} );
+</script>
 <body>
 <div id="content">
 <form method="POST" enctype="multipart/form-data">
@@ -42,14 +60,14 @@
 	  <input type="submit" name="upload" value="Submit Product Details">
   	</div>
 </form>
-<div class="table-responsive">
-<table class="table">
+<hr>
+<table id="example" class="display" style="width:100%">
       <thead>
         <tr>
           <th>id</th>
           <th>Image name</th>
           <th>Image</th>
-          <th></th>        
+		  <th></th> 
 		</tr>
       </thead>
 	  <tbody>
@@ -62,13 +80,11 @@
 			  <td><?php echo $row['id']  ?></td>
 			  <td><?php echo $row['mime']  ?></td>
 			  <td> <img src='data:image/jpeg;base64,<?php echo base64_encode($row['data']) ?>' alt='<?php echo $row['mime'] ?>'  class="img-thumbnail" width="307" height="240"/> </td>
-			  <td><button>Edit </button></td>
-			  <td><button>Delete</button></td>
+			  <td><button class="button1">Edit </button> <button class="button2">Delete</button></td>
 			</tr>
 		 <?php }?>
 	  </tbody>
 </table>
-</div>
 </div>
 </body>
 </html>

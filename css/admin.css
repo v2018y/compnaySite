@@ -1,22 +1,9 @@
-#content{
-    width: 50%;
-    margin: 20px auto;
-}
 form{
     width: 50%;
     margin: 20px auto;
 }
 form div{
     margin-top: 5px;
-}
-.row {
-   display: flex;
- }
-
-/* Create three equal columns that sits next to each other */
-.column {
-flex: 33.33%;
-padding: 5px;
 }
 
 input[type=text], select,textArea {
@@ -42,4 +29,25 @@ cursor: pointer;
 
 input[type=submit]:hover {
 background-color: #45a049;
+}
+.button1{
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.button2{
+    background-color: rgb(231, 23, 34); /* Green */
+    border: none;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 12px;
+    cursor: pointer;
 }
