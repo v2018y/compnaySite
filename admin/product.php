@@ -37,27 +37,51 @@
 $(document).ready(function() {
     $('#example').DataTable(
 		{"columns": [
-            { "data": "id" },
+			{ "data": "id" },
+			{ "data": "client_name" },
+			{ "data": "compnay_name" },
             { "data": "image_name" },
-            { "data": "image" },
+			{ "data": "image" },
+			{ "data": "prodDisc" },
 			{ "data": "" }
 		],
 		"lengthMenu": [[2,5,10, 25, 50, -1], [2,5,10, 25, 50, "All"]],
 		"pagingType": "full_numbers",
 		"iDisplayLength": 2
-	}
-	);
+		});
+	$(".button1").on('click',function(event){
+		var row=$(this).closest('tr');
+		var updateData = $('.display').dataTable().fnGetData(row);
+		$('#id').val(updateData.id);
+		$('#person_name').val(updateData.client_name);
+		$('#compnay_name').val(updateData.compnay_name);
+		$('#product_disp').val(updateData.prodDisc);
+		$('#button').val('Update Product Details');
+		$('#button').css('background-color','green');
+	})
+
+	$(".button2").on('click',function(event){
+		var row=$(this).closest('tr');
+		var deleteData = $('.display').dataTable().fnGetData(row);
+		$('#id').val(deleteData.id);
+		$('#person_name').val(deleteData.client_name);
+		$('#compnay_name').val(deleteData.compnay_name);
+		$('#product_disp').val(deleteData.prodDisc);
+		$('#button').val('Delete Product Details');
+		$('#button').css('background-color','red');
+	})
 } );
 </script>
 <body>
 <div id="content">
 <form method="POST" enctype="multipart/form-data">
   	<div>
+	  <input type="hidden" id="id"/>
   	  <input type="file" name="image" ><br>
-      <input type="text" id="text" name="person_name"  placeholder="Enter Project Client Name" /><br>
-	  <input type="text" id="text" name="compnay_name"  placeholder="Enter Compnay Name" /><br>
-	  <textArea id="text" name="product_disp"  placeholder="Enter Product Discription" ></textArea>
-	  <input type="submit" name="upload" value="Submit Product Details">
+      <input type="text" id="person_name" name="person_name"  placeholder="Enter Project Client Name" /><br>
+	  <input type="text" id="compnay_name" name="compnay_name"  placeholder="Enter Compnay Name" /><br>
+	  <textArea id="product_disp" name="product_disp"  placeholder="Enter Product Discription" ></textArea>
+	  <input type="submit" id="button" name="upload" value="Submit Product Details">
   	</div>
 </form>
 <hr>
@@ -65,8 +89,11 @@ $(document).ready(function() {
       <thead>
         <tr>
           <th>id</th>
+		  <th>Client Name</th>
+		  <th>Compnay Name</th>
           <th>Image name</th>
           <th>Image</th>
+		  <th>Discription</th>
 		  <th></th> 
 		</tr>
       </thead>
@@ -78,8 +105,11 @@ $(document).ready(function() {
 		 ?>
 			<tr>
 			  <td><?php echo $row['id']  ?></td>
+			  <td><?php echo $row['client_name']  ?></td>
+			  <td><?php echo $row['compnay_name']  ?></td>
 			  <td><?php echo $row['mime']  ?></td>
 			  <td> <img src='data:image/jpeg;base64,<?php echo base64_encode($row['data']) ?>' alt='<?php echo $row['mime'] ?>'  class="img-thumbnail" width="307" height="240"/> </td>
+			  <td><?php echo $row['prodDisc']  ?></td>
 			  <td><button class="button1">Edit </button> <button class="button2">Delete</button></td>
 			</tr>
 		 <?php }?>
