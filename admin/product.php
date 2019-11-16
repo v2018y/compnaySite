@@ -1,26 +1,38 @@
 <?php
-   include("../data/db/db.php");
-  // If upload button is clicked ...
-  if (isset($_POST['upload'])) {
-	// Get Client Name
-	$client_name=$_POST['person_name'];
-	// Get Client Name
-	$compnay_name=$_POST['compnay_name'];
-	// Get Product Discrptions
-	$prod_disc=$_POST['product_disp'];
-	// Get image name
-	$image_name = $_FILES['image']['name'];
-    // convert into blob 
-	$image_bolob = addslashes(file_get_contents($_FILES['image']['tmp_name']));
-	// Query for executions  
-	$sql = "INSERT INTO `product`( `mime`, `data`, `client_name`, `compnay_name`,`prodDisc`) VALUES ('$image_name', '$image_bolob','$client_name','$compnay_name','$prod_disc')";
-  	// execute query
+   include("../data/db/db.php"); 
+   // If upload ,update/delete button is clicked ...
+if (isset($_POST['upload']) || isset($_POST['update']) || isset($_POST['delete']) ) {
+	    // Get Client Name
+	     $client_name=$_POST['person_name'];
+	    // // Get Client Name
+	     $compnay_name=$_POST['compnay_name'];
+	    // // Get Product Discrptions
+	     $prod_disc=$_POST['product_disp'];
+	
+	if(isset($_POST['upload'])){
+		echo "insert";
+		// Get image name
+		$image_name = $_FILES['image']['name'];
+		// convert into blob 
+		$image_bolob = addslashes(file_get_contents($_FILES['image']['tmp_name']));
+		// Query for executions  
+		$sql = "INSERT INTO `product`( `mime`, `data`, `client_name`, `compnay_name`,`prodDisc`) VALUES ('$image_name', '$image_bolob','$client_name','$compnay_name','$prod_disc')";
+	}else if(isset($_POST['update'])) {
+		$id=$_POST['id'];
+		echo "update".$id;
+		$sql="UPDATE `product` SET `client_name`='$client_name',`compnay_name`='$compnay_name',`prodDisc`='$prod_disc' WHERE `id`=$id";
+	}else if(isset($_POST['delete'])){
+		$id=$_POST['id'];
+		echo "delete".$id ;
+		$sql="DELETE FROM `product` WHERE `id`=$id";
+	}
+	// execute query
 	$result = mysqli_query($link, $sql);
 	if($result){
-		echo "Your Data is Inserted SuccessFully";
+		echo "Your Execution SuccessFully Executed";
 		header("Location: product.php");
 	}else{
-		echo "<script>alert('Your Data is Not Inserted SuccessFully')</script>";
+		echo "<script>alert('Your Execution is Not Executed SuccessFully')</script>";
 	 }
 }
 ?>
@@ -56,6 +68,7 @@ $(document).ready(function() {
 		$('#person_name').val(updateData.client_name);
 		$('#compnay_name').val(updateData.compnay_name);
 		$('#product_disp').val(updateData.prodDisc);
+		$('#button').attr('name','update')
 		$('#button').val('Update Product Details');
 		$('#button').css('background-color','green');
 	})
@@ -67,16 +80,17 @@ $(document).ready(function() {
 		$('#person_name').val(deleteData.client_name);
 		$('#compnay_name').val(deleteData.compnay_name);
 		$('#product_disp').val(deleteData.prodDisc);
+		$('#button').attr('name','delete')
 		$('#button').val('Delete Product Details');
 		$('#button').css('background-color','red');
 	})
 } );
 </script>
 <body>
-<div id="content">
+<div id="content">	
 <form method="POST" enctype="multipart/form-data">
   	<div>
-	  <input type="hidden" id="id"/>
+	  <input type="hidden" id="id" name="id"/>
   	  <input type="file" name="image" ><br>
       <input type="text" id="person_name" name="person_name"  placeholder="Enter Project Client Name" /><br>
 	  <input type="text" id="compnay_name" name="compnay_name"  placeholder="Enter Compnay Name" /><br>
