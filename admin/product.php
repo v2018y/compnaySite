@@ -29,10 +29,10 @@ if (isset($_POST['upload']) || isset($_POST['update']) || isset($_POST['delete']
 	// execute query
 	$result = mysqli_query($link, $sql);
 	if($result){
-		echo "Your Execution SuccessFully Executed";
+		echo "Your Query Execute SuccessFully Executed";
 		header("Location: product.php");
 	}else{
-		echo "<script>alert('Your Execution is Not Executed SuccessFully')</script>";
+		echo "<script>alert('Your Query is Not Execute SuccessFully')</script>";
 	 }
 }
 ?>
@@ -102,7 +102,7 @@ $(document).ready(function() {
 <table id="example" class="display" style="width:100%">
       <thead>
         <tr>
-          <th>id</th>
+          <th>Sr. No</th>
 		  <th>Client Name</th>
 		  <th>Compnay Name</th>
           <th>Image name</th>
