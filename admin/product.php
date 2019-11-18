@@ -61,7 +61,7 @@ $(document).ready(function() {
 		"pagingType": "full_numbers",
 		"iDisplayLength": 2
 		});
-	$(".button1").on('click',function(event){
+	$("#example").on('click','.button1',function(event){
 		var row=$(this).closest('tr');
 		var updateData = $('.display').dataTable().fnGetData(row);
 		$('#id').val(updateData.id);
@@ -73,7 +73,7 @@ $(document).ready(function() {
 		$('#button').css('background-color','green');
 	})
 
-	$(".button2").on('click',function(event){
+	$("#example").on('click','.button2',function(event){
 		var row=$(this).closest('tr');
 		var deleteData = $('.display').dataTable().fnGetData(row);
 		$('#id').val(deleteData.id);
